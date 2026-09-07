@@ -106,10 +106,22 @@ divine names render as `#divine` (`hyphenate: false` + smallcaps).
 | Regen | `make travel-hyphenation-qa` |
 | Engine | Typst 0.14.2 |
 | Compiled | 2026-09-07 |
-| Pages | *(filled after compile)* |
-| Size | *(filled after compile)* |
-| SHA-256 | *(filled after compile)* |
+| Pages | 3 (native 4.75 × 7 in leaves) |
+| Size | 70,209 bytes |
+| SHA-256 | `49ffa72caf8532833de43b65ec7bb17067c752ecb3a40b51c8be9bd67d5b1f52` |
 | PNGs | `drafts/travel/hyphenation/*.png` (120 dpi) |
+
+| Leaf | Source page | Hyphen breaks | What to check |
+|------|-------------|---------------|---------------|
+| `john-prose` | 300 (John 4) | 2 | `salva-` / `speak-` in dense Samaritan-woman prose |
+| `psalm-119` | 254 | 0 | Poetry + ALEPH; no tofu; LORD unhyphenated |
+| `genesis-1` | 1 | 0 | Title/drop open; early notes |
+
+| PNG | Bytes | SHA-256 |
+|-----|-------|---------|
+| `hyphenation/john-prose.png` | 176,428 | `96a95c9613121d9fac7f0e127fc9ad84686cbd34e0ad270c97b19ce62fe53ac0` |
+| `hyphenation/psalm-119.png` | 125,274 | `e28e73343403103e960068d5680e8c07e405ee0bc474ab53d2a2fd0dcc6444c2` |
+| `hyphenation/genesis-1.png` | 104,081 | `bef78cd1dc51babe2d9188e9752682f44646bf923e7f90db540ed636c5f2cb41` |
 
 John-only probe at the old 120% cost had **2** line-end hyphens in 49 pages;
 80% yields about **11**. 50% jumped to 34 and started chopping short stems

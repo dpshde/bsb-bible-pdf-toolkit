@@ -107,7 +107,9 @@ still watermarked `GRID PROOF — NOT FINAL FACE`. Not Milo.
 make travel-hyphenation-qa
 ```
 
-Output: `drafts/travel/bsb-travel-hyphenation-qa-grid-proof.pdf`.
+Output: `drafts/travel/bsb-travel-hyphenation-qa-grid-proof.pdf`
+(3 leaves, 70,209 bytes, SHA-256
+`49ffa72caf8532833de43b65ec7bb17067c752ecb3a40b51c8be9bd67d5b1f52`).
 120 dpi PNG previews: `drafts/travel/hyphenation/*.png`.
 Hashes and leaf notes: [`HOTSPOTS.md`](HOTSPOTS.md).
 
