@@ -114,6 +114,9 @@ class TravelSpec:
     body_font_alias: str = MILO_TEXT_ALIAS
     head_font: str = MILO_HEAD_FAMILY
     hyphen_lang: str = "en"
+    # 120% left the 60–70 cpl travel measure almost unhyphenated (2 breaks
+    # in 49 John pages). 80% is still conservative vs Typst's 50% eagerness.
+    hyphenation_cost_pct: int = 80
 
 
 SPEC = TravelSpec()
@@ -353,7 +356,7 @@ def render_text_chunk(raw: str) -> str:
         if inner:
             escaped = typst_escape(inner)
             if match.group(1) == "nd":
-                pieces.append(f"#smallcaps[{escaped}]")
+                pieces.append(f"#divine[{escaped}]")
             else:
                 pieces.append(f"#emph[{escaped}]")
         pos = match.end()
@@ -666,7 +669,7 @@ def travel_preamble(spec: TravelSpec = SPEC, *, grid_proof: bool = False) -> str
   overhang: true,
   top-edge: body-size,
   bottom-edge: 0pt,
-  costs: (hyphenation: 120%, runt: 160%, widow: 100%, orphan: 100%),
+  costs: (hyphenation: {spec.hyphenation_cost_pct}%, runt: 160%, widow: 100%, orphan: 100%),
 )
 
 #set par(
@@ -692,6 +695,7 @@ def travel_preamble(spec: TravelSpec = SPEC, *, grid_proof: bool = False) -> str
 }}
 
 #let woc(body) = text(fill: woc-blue, font: (body-font, "{body_alias}"))[#body]
+#let divine(body) = text(hyphenate: false)[#smallcaps[#body]]
 
 #let vnum(n) = text(
   font: head-font,

@@ -77,7 +77,10 @@ must never be presented as the loved face.
 
 ## 3. Composition
 
-- Language `en`, hyphenation on.
+- Language `en`, hyphenation on. Hyphenation cost is **80%** of Typst’s
+  default (the previous 120% left the 60–70 cpl travel measure almost
+  unhyphenated). Divine-name spans (`\nd` → `#divine`) set
+  `hyphenate: false` so LORD / GOD do not break.
 - Justified body; Typst optimized paragraph line-breaks (whole-paragraph
   composer, not first-fit).
 - Justification limits: word space 80–150%; tracking −0.005 em to +0.01 em

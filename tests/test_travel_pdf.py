@@ -115,6 +115,9 @@ def test_preamble_is_milo_text_not_a_substitute():
     assert "fallback: false" in preamble
     assert 'lang: "en"' in preamble
     assert "hyphenate: true" in preamble
+    assert f"hyphenation: {SPEC.hyphenation_cost_pct}%" in preamble
+    assert SPEC.hyphenation_cost_pct == 80
+    assert "#let divine(" in preamble
     assert 'linebreaks: "optimized"' in preamble
     assert "overhang: true" in preamble
     assert "Source Serif" not in preamble or "Do not substitute Source Serif" in preamble
@@ -522,8 +525,11 @@ def test_cli_all_books_and_book_exits_2(tmp_path):
 
 def test_selah_and_divine_name_spans():
     text = render_text_chunk(r"Wait on \nd the LORD\nd* . \qs Selah\qs*")
-    assert "#smallcaps[the LORD]" in text
+    assert "#divine[the LORD]" in text
     assert "#emph[Selah]" in text
+    preamble = travel_preamble()
+    assert "hyphenate: false" in preamble
+    assert "#let divine(body) = text(hyphenate: false)[#smallcaps[#body]]" in preamble
 
 
 def test_parse_facing_pairs_defaults_and_rejects_non_opening():
@@ -701,3 +707,35 @@ def test_hotspot_rejects_hebrew_tofu_on_psalm_119():
     ]
     with pytest.raises(ValueError, match="forbidden"):
         select_hotspot_pages(pages, catalog)
+
+
+def test_hyphenation_qa_picks_densest_john_page():
+    from bsb_pdf_toolkit.compose_travel_hyphenation import (
+        DEFAULT_OUTPUT,
+        HYPHEN_QA_BOOKS,
+        BookFace,
+        count_hyphen_breaks,
+        pick_most_hyphens,
+        select_hyphenation_pages,
+    )
+
+    assert HYPHEN_QA_BOOKS == ("Genesis", "Psalms", "John")
+    assert DEFAULT_OUTPUT.name == "bsb-travel-hyphenation-qa-grid-proof.pdf"
+    assert count_hyphen_breaks("perform\u00ad\ning") == 1
+    assert pick_most_hyphens(["aa", "prepa\u00ad", "bb\u00ad cc\u00ad"], 1, 3) == 3
+
+    catalog = [
+        BookFace("Genesis", "Genesis", "Genesis"),
+        BookFace("Psalms", "Psalm", "Psalm"),
+        BookFace("John", "The Gospel According to John", "John"),
+    ]
+    pages = [
+        "GENESIS · 1\nIn the beginning God created. GRID PROOF — NOT FINAL FACE",
+        "PSALM · 1\nBlessed is the man. GRID PROOF",
+        "PSALM · 119\nALEPH\nBlessed are those whose way is blameless. GRID PROOF",
+        "JOHN · 3\nFor God so loved the world. GRID PROOF",
+        "JOHN · 4\nsurprised that He was speak\u00ad\ning. GRID PROOF",
+    ]
+    chosen = select_hyphenation_pages(pages, catalog)
+    assert [spec.slug for spec, _ in chosen] == ["john-prose", "psalm-119", "genesis-1"]
+    assert [page_no for _, page_no in chosen] == [5, 3, 1]

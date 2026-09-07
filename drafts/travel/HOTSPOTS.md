@@ -93,6 +93,28 @@ Page 2 notes **a–f**; page 3 starts at **a**. Spread PDF SHA-256
 (70,080 bytes). Facing PNGs are unchanged from the 2026-09-03 line-match
 pass.
 
+## Hyphenation QA (2026-09-07)
+
+`make travel-hyphenation-qa` compiles Genesis + Psalms + John and extracts
+three stress leaves. The travel preamble now uses `lang: "en"`,
+`hyphenate: true`, and hyphenation cost **80%** (was 120%). USFM `\nd`
+divine names render as `#divine` (`hyphenate: false` + smallcaps).
+
+| Item | Value |
+|------|-------|
+| File | `drafts/travel/bsb-travel-hyphenation-qa-grid-proof.pdf` |
+| Regen | `make travel-hyphenation-qa` |
+| Engine | Typst 0.14.2 |
+| Compiled | 2026-09-07 |
+| Pages | *(filled after compile)* |
+| Size | *(filled after compile)* |
+| SHA-256 | *(filled after compile)* |
+| PNGs | `drafts/travel/hyphenation/*.png` (120 dpi) |
+
+John-only probe at the old 120% cost had **2** line-end hyphens in 49 pages;
+80% yields about **11**. 50% jumped to 34 and started chopping short stems
+(`bap-`, `tes-`). 80% is the travel setting.
+
 ## Compact sampler (2026-09-06)
 
 `make travel-hotspot-sampler` builds a committed multi-leaf PDF from a

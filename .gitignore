@@ -22,6 +22,7 @@ dist/
 !drafts/travel/bsb-travel-john-grid-proof.pdf
 !drafts/travel/bsb-travel-john-spreads-grid-proof.pdf
 !drafts/travel/bsb-travel-hotspot-sampler-grid-proof.pdf
+!drafts/travel/bsb-travel-hyphenation-qa-grid-proof.pdf
 !examples/*.pdf
 *.epub
 *.zip
@@ -30,6 +31,8 @@ dist/
 !drafts/travel/spreads/*.png
 !drafts/travel/hotspots/
 !drafts/travel/hotspots/*.png
+!drafts/travel/hyphenation/
+!drafts/travel/hyphenation/*.png
 bsb-*.typ
 drafts/travel/work/
 .DS_Store

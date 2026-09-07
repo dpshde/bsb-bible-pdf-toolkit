@@ -96,6 +96,21 @@ Intermediate compile (gitignored): `drafts/travel/work/hotspot-books-grid-proof.
 
 Leaf list and PNG hashes: [`HOTSPOTS.md`](HOTSPOTS.md).
 
+## Hyphenation QA
+
+`make travel-hyphenation-qa` compiles Genesis, Psalms, and John with the
+current travel hyphen settings, then extracts three stress leaves: a dense
+John prose page, Psalm 119 poetry, and Genesis 1. Still Source Serif 4,
+still watermarked `GRID PROOF — NOT FINAL FACE`. Not Milo.
+
+```bash
+make travel-hyphenation-qa
+```
+
+Output: `drafts/travel/bsb-travel-hyphenation-qa-grid-proof.pdf`.
+120 dpi PNG previews: `drafts/travel/hyphenation/*.png`.
+Hashes and leaf notes: [`HOTSPOTS.md`](HOTSPOTS.md).
+
 ## BSB license
 
 The Berean Standard Bible text is public domain / CC0 (dedicated 30 April
