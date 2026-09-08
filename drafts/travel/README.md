@@ -116,8 +116,8 @@ Hashes and leaf notes: [`HOTSPOTS.md`](HOTSPOTS.md).
 ## Poetry QA
 
 `make travel-poetry-qa` compiles Genesis + Psalms and extracts Psalm 1 and
-Psalm 119 ALEPH so verse lines can be checked after the ragged-right
-poetry change. Still Source Serif 4, still watermarked
+Psalm 119 ALEPH so verse lines can be checked after the ragged-right,
+q1-on-measure / q2-step poetry change. Still Source Serif 4, still watermarked
 `GRID PROOF — NOT FINAL FACE`. Not Milo.
 
 ```bash

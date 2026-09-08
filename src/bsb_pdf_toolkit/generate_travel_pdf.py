@@ -748,10 +748,11 @@ def travel_preamble(spec: TravelSpec = SPEC, *, grid_proof: bool = False) -> str
 #let para(body) = block(spacing: leading-gap)[#body]
 #let poetry(level, body) = block(
   spacing: leading-gap,
-  inset: (left: 0.14in * level),
+  // q1 sits on the measure; each further q-level steps 0.18 in (parallelism).
+  inset: (left: 0.18in * calc.max(0, level - 1)),
 )[
   // Verse lines, not justified prose. Hanging wrap stays in the indent column.
-  #set par(justify: false, hanging-indent: 0.14in)
+  #set par(justify: false, hanging-indent: 0.18in)
   #body
 ]
 #let inscription(body) = block(spacing: baseline-skip)[

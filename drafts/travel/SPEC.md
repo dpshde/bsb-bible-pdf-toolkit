@@ -92,10 +92,10 @@ must never be presented as the loved face.
 - No orphan of a verse number: the verse numeral is boxed with a thin space
   so it cannot sit alone at the end of a line.
 - Widows/orphans of paragraph lines: Typst default costs (on).
-- Poetry (`\q1`, `\q2`) indents by 0.14 in per level, **ragged-right** (not
-  justified like body prose), with a 0.14 in hanging indent when a verse
-  line wraps. `\b` stanza pauses stay one extra baseline (21 pt). Still on
-  the grid.
+- Poetry (`\q1`, `\q2`) is **ragged-right** (not justified like body prose).
+  `\q1` sits on the text measure; each further level steps **0.18 in** so
+  the parallel colon is obvious. Wrapped verse lines hang 0.18 in. `\b`
+  stanza pauses stay one extra baseline (21 pt). Still on the grid.
 - The superscription `\pc` (e.g. the titulus) is a centered small-cap line.
 
 ## 4. Structure

@@ -96,9 +96,9 @@ pass.
 ## Poetry QA (2026-09-08)
 
 `make travel-poetry-qa` compiles Genesis + Psalms and extracts Psalm 1 and
-Psalm 119 ALEPH. Verse lines (`#poetry`) are now **ragged-right** with a
-0.14 in hanging wrap; body prose stays justified. `\b` stanza pauses were
-already one extra baseline (21 pt) on the grid.
+Psalm 119 ALEPH. Verse lines (`#poetry`) are **ragged-right**; `\q1` sits
+on the measure and `\q2` steps 0.18 in. Body prose stays justified. `\b`
+stanza pauses stay one extra baseline (21 pt) on the grid.
 
 | Item | Value |
 |------|-------|

@@ -747,7 +747,8 @@ def test_poetry_lines_are_ragged_not_justified():
     poetry_at = preamble.index("#let poetry(")
     snippet = preamble[poetry_at : poetry_at + 280]
     assert "justify: false" in snippet
-    assert "hanging-indent: 0.14in" in snippet
+    assert "hanging-indent: 0.18in" in snippet
+    assert "0.18in * calc.max(0, level - 1)" in snippet
     global_par = preamble[preamble.index("#set par(") : preamble.index("#let poetry(")]
     assert "justify: true" in global_par
 
