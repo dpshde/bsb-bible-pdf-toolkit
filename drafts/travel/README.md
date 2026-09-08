@@ -113,6 +113,21 @@ Output: `drafts/travel/bsb-travel-hyphenation-qa-grid-proof.pdf`
 120 dpi PNG previews: `drafts/travel/hyphenation/*.png`.
 Hashes and leaf notes: [`HOTSPOTS.md`](HOTSPOTS.md).
 
+## Poetry QA
+
+`make travel-poetry-qa` compiles Genesis + Psalms and extracts Psalm 1 and
+Psalm 119 ALEPH so verse lines can be checked after the ragged-right
+poetry change. Still Source Serif 4, still watermarked
+`GRID PROOF — NOT FINAL FACE`. Not Milo.
+
+```bash
+make travel-poetry-qa
+```
+
+Output: `drafts/travel/bsb-travel-poetry-qa-grid-proof.pdf`.
+120 dpi PNG previews: `drafts/travel/poetry/*.png`.
+Hashes and leaf notes: [`HOTSPOTS.md`](HOTSPOTS.md).
+
 ## BSB license
 
 The Berean Standard Bible text is public domain / CC0 (dedicated 30 April

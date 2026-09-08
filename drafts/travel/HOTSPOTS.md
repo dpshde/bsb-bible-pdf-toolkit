@@ -93,6 +93,24 @@ Page 2 notes **a–f**; page 3 starts at **a**. Spread PDF SHA-256
 (70,080 bytes). Facing PNGs are unchanged from the 2026-09-03 line-match
 pass.
 
+## Poetry QA (2026-09-08)
+
+`make travel-poetry-qa` compiles Genesis + Psalms and extracts Psalm 1 and
+Psalm 119 ALEPH. Verse lines (`#poetry`) are now **ragged-right** with a
+0.14 in hanging wrap; body prose stays justified. `\b` stanza pauses were
+already one extra baseline (21 pt) on the grid.
+
+| Item | Value |
+|------|-------|
+| File | `drafts/travel/bsb-travel-poetry-qa-grid-proof.pdf` |
+| Regen | `make travel-poetry-qa` |
+| Engine | Typst 0.14.2 |
+| Compiled | 2026-09-08 |
+| Pages | *(filled after compile)* |
+| Size | *(filled after compile)* |
+| SHA-256 | *(filled after compile)* |
+| PNGs | `drafts/travel/poetry/*.png` (120 dpi) |
+
 ## Hyphenation QA (2026-09-07)
 
 `make travel-hyphenation-qa` compiles Genesis + Psalms + John and extracts

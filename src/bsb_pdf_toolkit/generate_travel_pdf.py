@@ -749,7 +749,11 @@ def travel_preamble(spec: TravelSpec = SPEC, *, grid_proof: bool = False) -> str
 #let poetry(level, body) = block(
   spacing: leading-gap,
   inset: (left: 0.14in * level),
-)[#body]
+)[
+  // Verse lines, not justified prose. Hanging wrap stays in the indent column.
+  #set par(justify: false, hanging-indent: 0.14in)
+  #body
+]
 #let inscription(body) = block(spacing: baseline-skip)[
   #align(center)[#text(font: head-font, size: body-size, tracking: 0.08em)[#smallcaps(body)]]
 ]

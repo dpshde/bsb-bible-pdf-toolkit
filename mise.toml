@@ -30,6 +30,10 @@ run = "make travel-hotspot-sampler"
 description = "Hyphenation QA leaves: dense John, Psalm 119, Genesis 1 (not Milo)"
 run = "make travel-hyphenation-qa"
 
+[tasks.travel-poetry-qa]
+description = "Psalm 1 + Psalm 119 ragged-right poetry QA leaves (not Milo)"
+run = "make travel-poetry-qa"
+
 [tasks.travel-bible-grid-proof]
 description = "Full 66-book watermarked OFL metrics PDF (not the loved face; do not commit)"
 run = "make travel-bible-grid-proof"

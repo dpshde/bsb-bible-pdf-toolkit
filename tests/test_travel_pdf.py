@@ -472,6 +472,7 @@ def test_all_books_typst_is_canon_order_and_sample_only_on_first(tmp_path):
     assert "#superscription[Psalms 1–41]" in text
     assert "A Psalm of David" in text
     assert "#inscription[Selah]" in text
+    assert "#poetry(" in text
     assert "ALEPH" in text
     assert "BOOK I" in text
     assert "#counter(footnote).update(0)" in text
@@ -739,3 +740,25 @@ def test_hyphenation_qa_picks_densest_john_page():
     chosen = select_hyphenation_pages(pages, catalog)
     assert [spec.slug for spec, _ in chosen] == ["john-prose", "psalm-119", "genesis-1"]
     assert [page_no for _, page_no in chosen] == [5, 3, 1]
+
+
+def test_poetry_lines_are_ragged_not_justified():
+    preamble = travel_preamble()
+    poetry_at = preamble.index("#let poetry(")
+    snippet = preamble[poetry_at : poetry_at + 280]
+    assert "justify: false" in snippet
+    assert "hanging-indent: 0.14in" in snippet
+    global_par = preamble[preamble.index("#set par(") : preamble.index("#let poetry(")]
+    assert "justify: true" in global_par
+
+
+def test_poetry_qa_paths_and_leaf_order():
+    from bsb_pdf_toolkit.compose_travel_poetry import (
+        DEFAULT_OUTPUT,
+        POETRY_QA_BOOKS,
+        POETRY_QA_LEAVES,
+    )
+
+    assert POETRY_QA_BOOKS == ("Genesis", "Psalms")
+    assert DEFAULT_OUTPUT.name == "bsb-travel-poetry-qa-grid-proof.pdf"
+    assert [spec.slug for spec in POETRY_QA_LEAVES] == ["psalm-1", "psalm-119"]
