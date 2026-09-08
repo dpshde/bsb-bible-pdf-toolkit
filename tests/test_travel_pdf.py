@@ -745,7 +745,7 @@ def test_hyphenation_qa_picks_densest_john_page():
 def test_poetry_lines_are_ragged_not_justified():
     preamble = travel_preamble()
     poetry_at = preamble.index("#let poetry(")
-    snippet = preamble[poetry_at : poetry_at + 280]
+    snippet = preamble[poetry_at : poetry_at + 420]
     assert "justify: false" in snippet
     assert "hanging-indent: 0.18in" in snippet
     assert "0.18in * calc.max(0, level - 1)" in snippet

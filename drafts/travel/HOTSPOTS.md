@@ -106,10 +106,20 @@ stanza pauses stay one extra baseline (21 pt) on the grid.
 | Regen | `make travel-poetry-qa` |
 | Engine | Typst 0.14.2 |
 | Compiled | 2026-09-08 |
-| Pages | *(filled after compile)* |
-| Size | *(filled after compile)* |
-| SHA-256 | *(filled after compile)* |
+| Pages | 2 (native 4.75 × 7 in leaves) |
+| Size | 48,582 bytes |
+| SHA-256 | `767ad2fe1ec6635a1534d60815cab9f93406f2af738d7a9fb38cb4fd3a4a8e13` |
 | PNGs | `drafts/travel/poetry/*.png` (120 dpi) |
+
+| Leaf | Source page | What to check |
+|------|-------------|---------------|
+| `psalm-1` | 96 | q1 on the measure; q2 +0.18 in; `\b` gaps after vv. 3 and 5 |
+| `psalm-119` | 254 | ALEPH couplets with the same step; no Hebrew tofu |
+
+| PNG | Bytes | SHA-256 |
+|-----|-------|---------|
+| `poetry/psalm-1.png` | 97,747 | `cb47ce7d6c06a8c3bb9a06f38f2b49cd1703ed3149ec41e65769294bacbf455b` |
+| `poetry/psalm-119.png` | 125,567 | `b5042777cd9f120fb6f6c41cde3888c607773956cd1f1cae6d0859c70961d181` |
 
 ## Hyphenation QA (2026-09-07)
 

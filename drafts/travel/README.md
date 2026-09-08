@@ -124,7 +124,9 @@ q1-on-measure / q2-step poetry change. Still Source Serif 4, still watermarked
 make travel-poetry-qa
 ```
 
-Output: `drafts/travel/bsb-travel-poetry-qa-grid-proof.pdf`.
+Output: `drafts/travel/bsb-travel-poetry-qa-grid-proof.pdf`
+(2 leaves, 48,582 bytes, SHA-256
+`767ad2fe1ec6635a1534d60815cab9f93406f2af738d7a9fb38cb4fd3a4a8e13`).
 120 dpi PNG previews: `drafts/travel/poetry/*.png`.
 Hashes and leaf notes: [`HOTSPOTS.md`](HOTSPOTS.md).
 
