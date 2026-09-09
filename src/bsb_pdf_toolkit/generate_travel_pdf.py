@@ -481,7 +481,7 @@ def paragraph_markup(para, osis, chapter, chapter_open=False):
                     f"#chapter-drop({typst_string(url)}, {chapter}, {typst_string(str(verse))})[{body}]"
                 )
             else:
-                pieces.append(f"#verse({typst_string(url)}, {typst_string(str(verse))})[{body}]")
+                pieces.append(f"#verse({typst_string(url)}, {int(chapter)}, {int(verse)})[{body}]")
             first = False
         content = " ".join(piece for piece in pieces if piece).strip()
         if not content:
@@ -617,6 +617,24 @@ def travel_preamble(spec: TravelSpec = SPEC, *, grid_proof: bool = False) -> str
   chapter-label.update(label)
   [#metadata(label)<run-head>]
 }}
+#let run-book-from(label) = {{
+  if label.contains(" · ") {{
+    label.split(" · ").first()
+  }} else {{
+    label
+  }}
+}}
+#let format-run-head(book, start-ch, start-v, end-ch, end-v) = {{
+  if start-ch == end-ch {{
+    if start-v == end-v {{
+      book + " · " + str(start-ch) + ":" + str(start-v)
+    }} else {{
+      book + " · " + str(start-ch) + ":" + str(start-v) + "–" + str(end-v)
+    }}
+  }} else {{
+    book + " · " + str(start-ch) + ":" + str(start-v) + "–" + str(end-ch) + ":" + str(end-v)
+  }}
+}}
 {proof_lets}
 #set page(
   width: trim-width,
@@ -645,7 +663,16 @@ def travel_preamble(spec: TravelSpec = SPEC, *, grid_proof: bool = False) -> str
         let before = marks.filter(it => it.location().page() < page-num)
         if before.len() > 0 {{ before.last().value }} else {{ chapter-label.get() }}
       }}
-      let label = smallcaps(label-text)
+      let book = run-book-from(label-text)
+      let verses = query(<run-verse>).filter(it => it.location().page() == page-num)
+      let display = if verses.len() > 0 {{
+        let a = verses.first().value
+        let b = verses.last().value
+        format-run-head(book, a.at(0), a.at(1), b.at(0), b.at(1))
+      }} else {{
+        label-text
+      }}
+      let label = smallcaps(display)
       if calc.odd(page-num) {{
         align(right, label)
       }} else {{
@@ -705,7 +732,8 @@ def travel_preamble(spec: TravelSpec = SPEC, *, grid_proof: bool = False) -> str
   fill: ink,
 )[#n]
 
-#let verse(url, n, body) = {{
+#let verse(url, ch, n, body) = {{
+  [#metadata((ch, n))<run-verse>]
   link(url)[#box[#vnum(n)#h(0.12em)]#body]
 }}
 
@@ -729,6 +757,7 @@ def travel_preamble(spec: TravelSpec = SPEC, *, grid_proof: bool = False) -> str
 }}
 
 #let chapter-drop(url, n, verse-n, body) = {{
+  [#metadata((n, verse-n))<run-verse>]
   let gap = 0.08in
   let cap = geometric-cap(n)
   block(breakable: false, spacing: leading-gap)[
@@ -739,7 +768,7 @@ def travel_preamble(spec: TravelSpec = SPEC, *, grid_proof: bool = False) -> str
       link(url, cap),
       {{
         set par(first-line-indent: 0pt)
-        verse(url, verse-n, body)
+        verse(url, n, verse-n, body)
       }},
     )
   ]

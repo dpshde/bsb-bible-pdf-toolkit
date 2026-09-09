@@ -270,7 +270,7 @@ def test_chapter_open_drop_uses_only_first_verse():
     }
     lines = paragraph_markup(para, "John", 1, chapter_open=True)
     assert any("#chapter-drop(" in line for line in lines)
-    assert any("#verse(" in line and "2" in line for line in lines)
+    assert any("#verse(" in line and ", 1, 2)" in line for line in lines)
 
 
 def test_verse_number_is_boxed_in_preamble():
@@ -283,7 +283,17 @@ def test_preamble_defines_chapter_state_before_page_header():
     preamble = travel_preamble()
     assert preamble.index('#let chapter-label = state("chapter-label"') < preamble.index("#set page(")
     assert preamble.index("#let mark-run(label)") < preamble.index("#set page(")
+    assert preamble.index("#let format-run-head(") < preamble.index("#set page(")
     assert "query(<run-head>)" in preamble
+    assert "query(<run-verse>)" in preamble
+    assert "[#metadata((ch, n))<run-verse>]" in preamble
+    assert "verse(url, n, verse-n, body)" in preamble
+    assert 'book + " · " + str(start-ch) + ":" + str(start-v) + "–" + str(end-v)' in preamble
+    grid = travel_preamble(grid_proof=True)
+    assert "query(<run-verse>)" in grid
+    assert 'align(if even { left } else { right }, header)' not in grid
+    assert "align(right, label)" in grid
+    assert "align(left, label)" in grid
 
 
 def test_preamble_resets_footnote_letters_in_page_header():
@@ -763,3 +773,33 @@ def test_poetry_qa_paths_and_leaf_order():
     assert POETRY_QA_BOOKS == ("Genesis", "Psalms")
     assert DEFAULT_OUTPUT.name == "bsb-travel-poetry-qa-grid-proof.pdf"
     assert [spec.slug for spec in POETRY_QA_LEAVES] == ["psalm-1", "psalm-119"]
+
+
+def test_travel_typst_emits_verse_chapter_for_running_headers(tmp_path):
+    usfm = write_sample_zip(tmp_path / "sample.zip")
+    out = tmp_path / "john.typ"
+    generate_travel_typst(usfm, out, books=("John",))
+    text = out.read_text()
+    assert '#verse("https://route.bible/John.1.2", 1, 2)[' in text
+    assert "#chapter-drop(" in text
+    assert "#let format-run-head(" in text
+    assert "query(<run-verse>)" in text
+
+
+def test_header_qa_paths_and_range_detection():
+    from bsb_pdf_toolkit.compose_travel_headers import (
+        DEFAULT_OUTPUT,
+        HEADER_PAGES,
+        HEADER_QA_BOOKS,
+        HEADER_SLUGS,
+        page_has_verse_header,
+    )
+
+    assert HEADER_QA_BOOKS == ("John",)
+    assert HEADER_PAGES == (2, 3, 6, 10)
+    assert HEADER_SLUGS == ("john-p02", "john-p03", "john-p06", "john-p10")
+    assert DEFAULT_OUTPUT.name == "bsb-travel-running-headers-qa-grid-proof.pdf"
+    assert page_has_verse_header("JOHN · 4:17–38\nThe woman said")
+    assert page_has_verse_header("JOHN · 3:31–4:2\nHe must increase")
+    assert not page_has_verse_header("JOHN · 4\nThe woman said")
+    assert not page_has_verse_header("The Gospel According to John")

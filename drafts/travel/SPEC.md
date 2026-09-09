@@ -126,8 +126,12 @@ must never be presented as the loved face.
 ## 5. Running matter
 
 - Page 1 (title) has no header or folio.
-- Running head, 7 pt small caps, outer: `JOHN · <chapter>` (book heading
-  from USFM `\h`).
+- Running head, 7 pt small caps, outer: `JOHN · <chapter>:<first>–<last>`
+  (book heading from USFM `\h`, plus the first and last verse marks on that
+  page). Same-chapter ranges omit the repeated chapter (`JOHN · 4:17–38`).
+  A page that crosses chapters uses `JOHN · 3:31–4:2`. If a page has no
+  verse marks, fall back to `JOHN · <chapter>`.
+- Verso (even) aligns left; recto (odd) aligns right.
 - Folio, 7 pt, centered in the foot.
 - Folios and running heads live in the head/foot margins, not in the 42-line
   text block.

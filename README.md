@@ -152,6 +152,7 @@ make travel-john-spreads        # 2-up John openings 2–3, 4–5, 10–11; not 
 make travel-hotspot-sampler     # compact committed hotspot leaves; not Milo
 make travel-hyphenation-qa      # John/poetry/Genesis hyphenation leaves; not Milo
 make travel-poetry-qa           # Psalm 1 + Psalm 119 poetry leaves; not Milo
+make travel-running-headers-qa  # John verso/recto running-header leaves; not Milo
 make travel-bible-grid-proof    # watermarked 66-book OFL metrics PDF; not Milo; do not commit
 PYTHONPATH=src python -m bsb_pdf_toolkit.generate_travel_pdf --help
 ```

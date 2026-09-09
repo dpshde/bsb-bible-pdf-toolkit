@@ -93,6 +93,33 @@ Page 2 notes **a–f**; page 3 starts at **a**. Spread PDF SHA-256
 (70,080 bytes). Facing PNGs are unchanged from the 2026-09-03 line-match
 pass.
 
+## Running-header QA (2026-09-09)
+
+`make travel-running-headers-qa` compiles John and extracts four interior
+leaves. Running heads now carry the page’s verse range:
+`JOHN · 4:17–38`, or `JOHN · 3:31–4:2` when a leaf crosses chapters.
+Page 1 still has no header. Verso left / recto right. Heads stay in the
+0.50 in head margin, not the 42-line text block. Source Serif 4 stand-in.
+Watermark `GRID PROOF — NOT FINAL FACE`. Not Milo.
+
+| Item | Value |
+|------|-------|
+| File | `drafts/travel/bsb-travel-running-headers-qa-grid-proof.pdf` |
+| Regen | `make travel-running-headers-qa` |
+| Engine | Typst 0.14.2 |
+| Compiled | 2026-09-09 |
+| Pages | 4 (native 4.75 × 7 in leaves) |
+| Size | (filled after compile) |
+| SHA-256 | (filled after compile) |
+| PNGs | `drafts/travel/headers/*.png` (120 dpi) |
+
+| Leaf | Source page | What to check |
+|------|-------------|---------------|
+| `john-p02` | 2 | Verso (even): left-aligned `JOHN · <ch>:<first>–<last>` |
+| `john-p03` | 3 | Recto (odd): right-aligned verse-range head |
+| `john-p06` | 6 | Mid-book prose leaf; range updates with the page |
+| `john-p10` | 10 | Later leaf; still outside the text block |
+
 ## Poetry QA (2026-09-08)
 
 `make travel-poetry-qa` compiles Genesis + Psalms and extracts Psalm 1 and

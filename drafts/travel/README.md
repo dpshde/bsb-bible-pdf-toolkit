@@ -130,6 +130,21 @@ Output: `drafts/travel/bsb-travel-poetry-qa-grid-proof.pdf`
 120 dpi PNG previews: `drafts/travel/poetry/*.png`.
 Hashes and leaf notes: [`HOTSPOTS.md`](HOTSPOTS.md).
 
+## Running-header QA
+
+`make travel-running-headers-qa` compiles John and extracts four interior
+leaves so verso/recto running heads can be checked after the
+`JOHN · <chapter>:<first>–<last>` change. Still Source Serif 4, still
+watermarked `GRID PROOF — NOT FINAL FACE`. Not Milo.
+
+```bash
+make travel-running-headers-qa
+```
+
+Output: `drafts/travel/bsb-travel-running-headers-qa-grid-proof.pdf`
+(hashes filled after compile). 120 dpi PNG previews:
+`drafts/travel/headers/*.png`. Leaf notes: [`HOTSPOTS.md`](HOTSPOTS.md).
+
 ## BSB license
 
 The Berean Standard Bible text is public domain / CC0 (dedicated 30 April
