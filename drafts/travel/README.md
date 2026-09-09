@@ -65,6 +65,88 @@ make travel-john-grid-proof
 Output: `drafts/travel/bsb-travel-john-grid-proof.pdf`.
 Typst source: `drafts/travel/work/john-grid-proof.typ`.
 
+Facing-page QA for John openings 2–3, 4–5, and the chapter-5 open at 10–11:
+
+```bash
+make travel-john-spreads
+```
+
+That recompiles the John grid-proof, then writes a 2-up PDF
+(`bsb-travel-john-spreads-grid-proof.pdf`) and 120 dpi PNGs under
+`spreads/`. Verso is left; recto is right; each leaf stays 4.75 × 7 in.
+Still not the loved face. Line-match notes live in [`HOTSPOTS.md`](HOTSPOTS.md).
+
+## Hotspot sampler (committed, not the 66-book file)
+
+`make travel-hotspot-sampler` compiles only Genesis, Psalms, Obadiah,
+1 John, and Revelation, then extracts the QA leaves so Dylan can open
+them without the ~70 MiB full-canon PDF. Still Source Serif 4, still
+watermarked `GRID PROOF — NOT FINAL FACE`. Not Milo.
+
+```bash
+make travel-hotspot-sampler
+```
+
+Output: `drafts/travel/bsb-travel-hotspot-sampler-grid-proof.pdf`
+(6 leaves, 86,279 bytes, SHA-256
+`a85c11a15610d4dce39c312dda6a6dc5461fab9f254de31f5be4087f827b6945`).
+120 dpi PNG previews: `drafts/travel/hotspots/*.png`.
+Intermediate compile (gitignored): `drafts/travel/work/hotspot-books-grid-proof.pdf`
+(335 pages).
+
+Leaf list and PNG hashes: [`HOTSPOTS.md`](HOTSPOTS.md).
+
+## Hyphenation QA
+
+`make travel-hyphenation-qa` compiles Genesis, Psalms, and John with the
+current travel hyphen settings, then extracts three stress leaves: a dense
+John prose page, Psalm 119 poetry, and Genesis 1. Still Source Serif 4,
+still watermarked `GRID PROOF — NOT FINAL FACE`. Not Milo.
+
+```bash
+make travel-hyphenation-qa
+```
+
+Output: `drafts/travel/bsb-travel-hyphenation-qa-grid-proof.pdf`
+(3 leaves, 70,209 bytes, SHA-256
+`49ffa72caf8532833de43b65ec7bb17067c752ecb3a40b51c8be9bd67d5b1f52`).
+120 dpi PNG previews: `drafts/travel/hyphenation/*.png`.
+Hashes and leaf notes: [`HOTSPOTS.md`](HOTSPOTS.md).
+
+## Poetry QA
+
+`make travel-poetry-qa` compiles Genesis + Psalms and extracts Psalm 1 and
+Psalm 119 ALEPH so verse lines can be checked after the ragged-right,
+q1-on-measure / q2-step poetry change. Still Source Serif 4, still watermarked
+`GRID PROOF — NOT FINAL FACE`. Not Milo.
+
+```bash
+make travel-poetry-qa
+```
+
+Output: `drafts/travel/bsb-travel-poetry-qa-grid-proof.pdf`
+(2 leaves, 48,582 bytes, SHA-256
+`767ad2fe1ec6635a1534d60815cab9f93406f2af738d7a9fb38cb4fd3a4a8e13`).
+120 dpi PNG previews: `drafts/travel/poetry/*.png`.
+Hashes and leaf notes: [`HOTSPOTS.md`](HOTSPOTS.md).
+
+## Running-header QA
+
+`make travel-running-headers-qa` compiles John and extracts four interior
+leaves so verso/recto running heads can be checked after the
+`JOHN · <chapter>:<first>–<last>` change. Still Source Serif 4, still
+watermarked `GRID PROOF — NOT FINAL FACE`. Not Milo.
+
+```bash
+make travel-running-headers-qa
+```
+
+Output: `drafts/travel/bsb-travel-running-headers-qa-grid-proof.pdf`
+(4 leaves, 99,227 bytes, SHA-256
+`d715f8419b393f4eac5007873f22437d184c977444f223e02502f9908a73e463`).
+120 dpi PNG previews: `drafts/travel/headers/*.png`.
+Hashes and leaf notes: [`HOTSPOTS.md`](HOTSPOTS.md).
+
 ## BSB license
 
 The Berean Standard Bible text is public domain / CC0 (dedicated 30 April
@@ -94,7 +176,10 @@ grid proof only.
 ## Current grid-proof artifact
 
 This file is a **metrics proof**, not the loved-face print. Do not treat it
-as FF Milo Serif Text.
+as FF Milo Serif Text. Recompiled 2026-09-04 with the current travel
+layout (WOC blue, boxed chapter drops, per-page footnote letters). It is
+not the 2026-09-01 compile. Licensed FF Milo Serif Text is still missing
+from `fonts/milo/`.
 
 | Item | Value |
 |------|-------|
@@ -104,16 +189,44 @@ as FF Milo Serif Text.
 | Loved face | FF Milo Serif Text (not in this PDF) |
 | Source | `drafts/primary/source/engbsb_usfm.zip` |
 | Engine | Typst 0.14.2 |
+| Compiled | 2026-09-04 |
 | Trim | 4.75 in × 7.00 in |
 | Pages | 49 |
-| Links | 3372 |
-| Size | 2,033,576 bytes |
-| SHA-256 | `5db8eedc02e68394b11c3971336f1ddeb3a93f397f0f1c57329e088252b5fdc7` |
+| Links | 3370 |
+| Size | 2,029,571 bytes |
+| SHA-256 | `0b005230c7fdaa30915078fee3ea115ba50a2d465302565808b1e34ca22ea82c` |
 
 Re-hash after any recompile. The loved-face PDF is not committed until
 licensed Milo OTFs are present.
 
+## Full Protestant canon (grid proof only)
+
+`make travel-bible-grid-proof` composes all 66 Protestant books in canonical
+order at the same travel spec. Later books get a compact book title — the
+“Travel print sample · 4.75 × 7 in” line stays on the first book only
+(Genesis). Loved-face Milo compile remains fail-closed without `fonts/milo/`.
+
+This is still **not** the loved face. The stand-in is Source Serif 4, watermarked
+`GRID PROOF — NOT FINAL FACE` on every page. Do not commit the full-Bible PDF
+(it will be thousands of pages). John-only targets are unchanged:
+
+```bash
+make travel-john-grid-proof     # John sample; may be committed
+make travel-bible-grid-proof    # 66-book metrics PDF; do not git-add
+```
+
+Output: `drafts/travel/bsb-travel-bible-grid-proof.pdf` (gitignored).
+Typst source: `drafts/travel/work/bible-grid-proof.typ` (gitignored).
+
+If a single compile runs out of memory, `make travel-bible-ot-grid-proof` and
+`make travel-bible-nt-grid-proof` build the testaments separately.
+
+Raster QA of typesetting hotspots (Genesis 1, Exodus 20, Psalms, Matthew,
+John → Acts, Revelation 22, tiny books) lives in [`HOTSPOTS.md`](HOTSPOTS.md).
+That note records page counts for a local compile; the PDF itself is not
+committed.
+
 ## Scope
 
-John only. Whole-canon travel typesetting is later work. Audio/TTS pipelines
+John sample **and** an optional 66-book grid-proof target. Audio/TTS pipelines
 are untouched.
