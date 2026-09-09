@@ -142,8 +142,10 @@ make travel-running-headers-qa
 ```
 
 Output: `drafts/travel/bsb-travel-running-headers-qa-grid-proof.pdf`
-(hashes filled after compile). 120 dpi PNG previews:
-`drafts/travel/headers/*.png`. Leaf notes: [`HOTSPOTS.md`](HOTSPOTS.md).
+(4 leaves, 99,227 bytes, SHA-256
+`d715f8419b393f4eac5007873f22437d184c977444f223e02502f9908a73e463`).
+120 dpi PNG previews: `drafts/travel/headers/*.png`.
+Hashes and leaf notes: [`HOTSPOTS.md`](HOTSPOTS.md).
 
 ## BSB license
 

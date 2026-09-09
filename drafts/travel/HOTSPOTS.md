@@ -109,16 +109,23 @@ Watermark `GRID PROOF — NOT FINAL FACE`. Not Milo.
 | Engine | Typst 0.14.2 |
 | Compiled | 2026-09-09 |
 | Pages | 4 (native 4.75 × 7 in leaves) |
-| Size | (filled after compile) |
-| SHA-256 | (filled after compile) |
+| Size | 99,227 bytes |
+| SHA-256 | `d715f8419b393f4eac5007873f22437d184c977444f223e02502f9908a73e463` |
 | PNGs | `drafts/travel/headers/*.png` (120 dpi) |
 
-| Leaf | Source page | What to check |
-|------|-------------|---------------|
-| `john-p02` | 2 | Verso (even): left-aligned `JOHN · <ch>:<first>–<last>` |
-| `john-p03` | 3 | Recto (odd): right-aligned verse-range head |
-| `john-p06` | 6 | Mid-book prose leaf; range updates with the page |
-| `john-p10` | 10 | Later leaf; still outside the text block |
+| Leaf | Source page | Header | What to check |
+|------|-------------|--------|---------------|
+| `john-p02` | 2 | `JOHN · 1:14–28` | Verso (even): left-aligned verse range |
+| `john-p03` | 3 | `JOHN · 1:29–46` | Recto (odd): right-aligned verse range |
+| `john-p06` | 6 | `JOHN · 3:8–26` | Mid-book Nicodemus leaf; range follows the page |
+| `john-p10` | 10 | `JOHN · 4:53–5:15` | Cross-chapter span; boxed drop 5; still in the head margin |
+
+| PNG | Bytes | SHA-256 |
+|-----|-------|---------|
+| `headers/john-p02.png` | 148,898 | `8c776df2a053370e4006f3d9b5a03a8efc76896f267f029a1b2cf40be6ea2f0f` |
+| `headers/john-p03.png` | 169,626 | `6909dcfb870db43f86d392adb9a2385e9d071afedf0a4f83ee87a1b0cf3fdb88` |
+| `headers/john-p06.png` | 163,871 | `404f8a107a5e782547652ec8a2539e3fe2f307b9ca66cfbfb99ed740705af8e1` |
+| `headers/john-p10.png` | 160,243 | `84ed427d6786d0368da48e31a0d47667f5772dbb3e80cf145acf2a7d4511360c` |
 
 ## Poetry QA (2026-09-08)
 
